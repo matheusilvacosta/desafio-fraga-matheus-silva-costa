@@ -18,6 +18,8 @@ O valor das transferências devem ser maiores do que zero, com no máximo duas c
 
 Ao final da operação, o saldo e o histórico de transações de ambas as contas devem refletir a transferência.
 
+## Test Cases
+
 ```gherkin
 # language: pt
 

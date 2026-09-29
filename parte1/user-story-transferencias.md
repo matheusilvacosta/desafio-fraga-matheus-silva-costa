@@ -94,3 +94,32 @@ Funcionalidade: Transferência entre contas próprias
     Então os saldos das duas contas devem refletir a transferência
     E os históricos das duas contas devem refletir a mesma transferência
 ```
+
+## Dúvidas e suposições
+
+### Dúvidas
+
+**D01 — Cliente sem saldo**  
+O que deve acontecer quando um usuário tentar realizar uma transferência com o saldo maior do que ele possui em conta?
+
+**D02 — Transferência para a mesma conta**  
+O usuário pode transferir esse dinheiro para a mesma conta ou apenas uma conta de mesma titularidade?
+
+**D03 — Limites das transferências não definidos**  
+Deve existir algum tipo de valor máximo ou mínimo para as transferências?
+
+**D04 — Tratamento das casas decimais**  
+Dentro dos requisitos não há um critério sobre como tratar as casas decimais adjacentes, minha opinião é que o campo não permita o usuário fazer esse tipo de preenchimento (Com casas decimais além do especificado pelo requisito).
+
+**D05 — Deve-se haver uma forma de assegurar que a transferência seja concluída**  
+Há algum tratamento para caso o usuário inicie a transação e haja algum tipo de desconexão? O dinheiro seria debitado e se perdido ou teríamos algum tipo de aviso indicando que o usuário deve tentar novamente mais tarde?
+
+**D06 — Definiçoes sobre o histórico**  
+Definir com o time qual tipo de informação será salva no histórico, como ID, status, data.
+
+
+### Suposições adotadas
+
+Supondo que estamos refinando nossa user story, utilizei apenas os critérios de aceite já indicados no documento, num cenário real o time analisaria esses pontos de dúvida, com intuíto de trazer uma US mais interada, vendo o que faz sentido atuar ou não.
+Pontos não definidos nessa versão, como: saldo insuficiente, limite máximo/ mínimo, estado das contas ou falhas parciais, não foram atendidos.
+Para os testes de valor, foi considerado que valores com mais de duas casas decimais são inválidos, além disso técnicas de partição de equivalência e valor limite foram utilizados.

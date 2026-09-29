@@ -18,3 +18,15 @@ O valor das transferências devem ser maiores do que zero, com no máximo duas c
 
 Ao final da operação, o saldo e o histórico de transações de ambas as contas devem refletir a transferência.
 
+```gherkin
+# language: pt
+
+Funcionalidade: Transferência entre contas próprias
+  Como cliente do banco digital
+  Quero transferir dinheiro entre duas contas da minha titularidade
+  Para organizar minhas finanças
+
+  Contexto:
+    Dado que o cliente está na funcionalidade de transferência entre contas
+
+```

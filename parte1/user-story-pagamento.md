@@ -75,3 +75,38 @@ Funcionalidade: Pagamento de contas
     Quando solicita o pagamento
     Então o sistema deve impedir a realização do pagamento
 ```
+
+## Dúvidas e suposições
+
+### Dúvidas
+
+**D01 — O que caracteriza um pagamento inválido?**  
+O requisito informa que pagamentos inválidos devem ser impedidos, mas não define quais situações tornam um pagamento inválido, seriam boletos vencidos? Sem saldo o suficiente? Pagamento iniciado fora dos dias úteis?
+
+**D02 — Validação do código de barras**  
+Não está definido quais validações devem ser aplicadas ao código de barras informado, como quantidade de dígitos, formato esperado ou validade do código.
+
+**D03 — Pagamento de conta já paga**  
+Não está definido como o sistema deve se comportar caso o cliente tente pagar uma conta que já foi processada anteriormente, minha sugestão é que seja barrada a operação assim que verificado que o boleto já foi pago.
+
+**D04 — Tratamento de feriados**  
+O requisito informa que pagamentos só podem ser realizados em dias úteis, mas não especifica como feriados nacionais, estaduais ou municipais devem ser tratados, por definição feriados não são considerados dias úteis, então criei um campo geral para feriado, nos casos de teste.
+
+**D05 — Horário limite para pagamentos**  
+Não está definido se existe algum horário limite para realizar pagamentos em dias úteis.
+
+**D06 — Pagamento realizado em dia não útil**  
+Para melhor experiência do nosso cliente, devemos pensar em uma forma de agendar esse pagamento para o próximo dia útil e, caso o cliente tenha saldo nesse respectivo dia, o pagamento é realizado.
+
+**D07 — Consistência de saldo**  
+O requisito não informa explicitamente se o saldo da conta deve ser atualizado imediatamente após a conclusão do pagamento.
+
+**D08 — Consistência de histórico**  
+Não está definido se o pagamento deve gerar um registro no histórico da conta e quais informações devem ser armazenadas, como valor, data, código da operação ou status.
+
+### Suposições adotadas
+
+Para os testes definidos nesta etapa, foram utilizados apenas os critérios de aceite explicitamente descritos na user story.
+Não foram assumidos comportamentos específicos para contas vencidas, contas já pagas, saldo insuficiente, feriados, horários limite ou agendamento, pois esses pontos não estão definidos no requisito.
+Para os testes relacionados aos dias úteis, foram considerados segunda-feira a sexta-feira como cenários permitidos e sábado e domingo como cenários não permitidos. O tratamento de feriados permanece como uma dúvida, mas ainda identificada de forma geral nos testes.
+Como o requisito não define o que caracteriza um pagamento inválido, o cenário relacionado ao CA03 foi mantido de forma genérica até que os critérios de invalidez sejam esclarecidos.

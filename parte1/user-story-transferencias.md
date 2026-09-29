@@ -29,4 +29,68 @@ Funcionalidade: Transferência entre contas próprias
   Contexto:
     Dado que o cliente está na funcionalidade de transferência entre contas
 
+
+  @CA01 @positivo
+  Cenário: Realizar transferência entre contas do mesmo titular
+    Dado que a conta de origem e a conta de destino pertencem ao mesmo titular
+    Quando o cliente realiza uma transferência com um valor válido
+    Então a transferência deve ser permitida
+
+
+  @CA01 @negativo
+  Cenário: Impedir transferência entre contas de titulares diferentes
+    Dado que a conta de origem e a conta de destino pertencem a titulares diferentes
+    Quando o cliente tenta realizar a transferência
+    Então a transferência não deve ser permitida
+
+
+  @CA02 @positivo @fronteira
+  Esquema do Cenário: Realizar transferência com valor válido
+    Dado que a conta de origem e a conta de destino pertencem ao mesmo titular
+    Quando o cliente informa o valor "<valor>" para transferência
+    E confirma a operação
+    Então a transferência deve ser permitida
+
+    Exemplos:
+      | valor    |
+      | 0,01     |
+      | 10,99    |
+
+
+  @CA02 @negativo @fronteira
+  Esquema do Cenário: Impedir transferência com valor inválido
+    Dado que a conta de origem e a conta de destino pertencem ao mesmo titular
+    Quando o cliente informa o valor "<valor>" para transferência
+    E tenta confirmar a operação
+    Então a transferência não deve ser permitida
+
+    Exemplos:
+      | valor     |
+      | 0         |
+      | -0,01     |
+      | 10,999    |
+
+
+  @CA03 @saldo
+  Cenário: Atualizar os saldos das duas contas após a transferência
+    Dado que a conta de origem e a conta de destino pertencem ao mesmo titular
+    Quando o cliente realiza uma transferência com um valor válido
+    Então o saldo da conta de origem deve refletir a transferência
+    E o saldo da conta de destino deve refletir a transferência
+
+
+  @CA03 @historico
+  Cenário: Atualizar os históricos das duas contas após a transferência
+    Dado que a conta de origem e a conta de destino pertencem ao mesmo titular
+    Quando o cliente realiza uma transferência com um valor válido
+    Então o histórico da conta de origem deve refletir a transferência
+    E o histórico da conta de destino deve refletir a transferência
+
+
+  @CA03 @integridade
+  Cenário: Manter consistência entre saldo e histórico após a transferência
+    Dado que a conta de origem e a conta de destino pertencem ao mesmo titular
+    Quando o cliente realiza uma transferência com um valor válido
+    Então os saldos das duas contas devem refletir a transferência
+    E os históricos das duas contas devem refletir a mesma transferência
 ```

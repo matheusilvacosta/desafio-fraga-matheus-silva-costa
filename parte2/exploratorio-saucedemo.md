@@ -50,7 +50,7 @@ Os comportamentos encontrados durante a exploração foram reproduzidos novament
 para confirmar sua consistência, impacto e passos necessários para reprodução.
 
 
-## Observações da sessão
+## Observações da sessão, melhorias e dúvidas
 ### OBS01 — Dynamic Catalog — Spinner
 Foi observado que o comportamento do Dynamic Catalog — Spinner apresenta os
 produtos de forma semelhante à opção All Items.
@@ -83,8 +83,35 @@ e ZIP Code precisam ser informados novamente.
 Oportunidade de melhoria.
 
 ## Bugs encontrados
+### BUG-001 — Nome do produto exibe texto com aparência de função
+Foi identificado conteúdo com aparência de código/função no nome de um produto
+exibido no catálogo.
 
-## Melhorias e dúvidas
+Report completo: `bugs/BUG-001.md`
+
+### BUG-002 — Descrição do produto exibe texto com aparência de função
+Foi identificado conteúdo com aparência de código/função na descrição de um
+produto.
+
+Report completo: `bugs/BUG-002.md`
+
+### BUG-003 — Carrinho vazio não apresenta empty state adequado
+Ao acessar o carrinho sem produtos, a página permanece praticamente vazia e
+não apresenta uma mensagem clara indicando que não existem itens adicionados.
+
+Report completo: `bugs/BUG-003.md`
+
+### BUG-004 — Carrinho não permite alterar quantidade e não exibe imagens
+Os produtos do carrinho são apresentados sem suas imagens e não existe um
+controle disponível para alterar diretamente a quantidade de cada item.
+
+Report completo: `bugs/BUG-004.md`
+
+### BUG-005 — Checkout permite finalizar compra sem produtos
+O sistema permite avançar pelo checkout e concluir uma compra mesmo quando
+nenhum produto está presente no carrinho, gerando um pedido com total de $0.00.
+
+Report completo: `bugs/BUG-005.md`
 
 ## Bugs priorizados para regressão
 

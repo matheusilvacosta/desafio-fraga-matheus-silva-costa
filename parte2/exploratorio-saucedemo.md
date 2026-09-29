@@ -114,5 +114,14 @@ nenhum produto está presente no carrinho, gerando um pedido com total de $0.00.
 Report completo: `bugs/BUG-005.md`
 
 ## Bugs priorizados para regressão
+### 1. BUG-005 — Checkout permite finalizar compra sem produtos
+Maior prioridade para regressão por afetar diretamente o fluxo principal de compra. O sistema permite gerar um pedido mesmo sem produtos associados, resultando em uma operação de valor $0.00.
+Uma regressão nesse comportamento pode afetar regras importantes do processo de compra e geração de pedidos.
+
+### 2. BUG-004 — Carrinho não permite alterar quantidade e não exibe imagens
+Deve ser considerado em regressão por afetar uma etapa importante do fluxo de compra e a capacidade do usuário de revisar e gerenciar os produtos antes do checkout.
+
+### 3. BUG-003 — Carrinho vazio não apresenta empty state adequado
+Pode ser incluído na regressão do carrinho para garantir que o usuário receba um feedback adequado quando não possui produtos adicionados.
 
 ## Riscos e pontos sem cobertura

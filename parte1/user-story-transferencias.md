@@ -123,3 +123,23 @@ Definir com o time qual tipo de informação será salva no histórico, como ID,
 Supondo que estamos refinando nossa user story, utilizei apenas os critérios de aceite já indicados no documento, num cenário real o time analisaria esses pontos de dúvida, com intuíto de trazer uma US mais interada, vendo o que faz sentido atuar ou não.
 Pontos não definidos nessa versão, como: saldo insuficiente, limite máximo/ mínimo, estado das contas ou falhas parciais, não foram atendidos.
 Para os testes de valor, foi considerado que valores com mais de duas casas decimais são inválidos, além disso técnicas de partição de equivalência e valor limite foram utilizados.
+
+## Priorização dos testes
+
+Caso apenas 30% dos testes consigam ser realizados, deveríamos executar os seguintes testes respectivamente:
+
+### Realizar transferência entre contas do mesmo titular
+
+Este é o fluxo principal da funcionalidade. Caso ele não funcione corretamente, o cliente não consegue utilizar a transferência entre suas próprias contas. Além disso todos os critérios de aceite estabelecidos são atendidos, sendo um bom ponto de partida para iniciarmos um futuro teste de regressão.
+
+### Impedir transferência entre contas de titulares diferentes
+
+Valida uma regra de negócio explícita e crítica. Permitir uma transferência fora da mesma titularidade significaria aceitar uma operação que não deveria ser permitida pela funcionalidade.
+
+### Consistência entre saldo e histórico após a transferência
+
+Valida se a movimentação financeira foi refletida corretamente nas duas contas. Uma inconsistência entre saldo e histórico pode indicar que a transferência foi processada parcialmente ou registrada incorretamente.
+
+### Impedir transferência com valor inválido
+
+Verifica corretamente se o programa está tratando dados tratados como inválidos pela regra, impedindo transferências negativas, por exemplo.

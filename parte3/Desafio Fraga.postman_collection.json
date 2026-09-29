@@ -76,7 +76,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"firstname\": Matheus,\n    \"lastname\" : \"Silva Teste\",\n    \"totalprice\" : 200,\n    \"depositpaid\" : true,\n    \"bookingdates\": {\n    \"checkin\": \"2027-10-10\",\n    \"checkout\": \"2026-10-15\"\n    },\n    \"additionalneeds\" : \"Breakfast\"\n",
+              "raw": "{\n    \"firstname\": \"Matheus\",\n    \"lastname\": \"Silva Teste\",\n    \"totalprice\": \"duzentos\",\n    \"depositpaid\": true,\n    \"bookingdates\": {\n        \"checkin\": \"2027-10-10\",\n        \"checkout\": \"2026-10-15\"\n    },\n    \"additionalneeds\": \"Breakfast\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -190,6 +190,35 @@
           "response": []
         },
         {
+          "name": "Get Booking",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\nconst response = pm.response.json();\r\n\r\npm.test(\"Firstname is correct\", function () {\r\n    pm.expect(response.firstname).to.eql(\"Matheus\");\r\n});\r\n\r\npm.test(\"Lastname is correct\", function () {\r\n    pm.expect(response.lastname).to.eql(\"Silva Teste\");\r\n});\r\n\r\npm.test(\"Total price is correct\", function () {\r\n    pm.expect(response.totalprice).to.eql(200);\r\n});\r\n\r\npm.test(\"Deposit paid is correct\", function () {\r\n    pm.expect(response.depositpaid).to.eql(true);\r\n});\r\n\r\npm.test(\"Check-in date is correct\", function () {\r\n    pm.expect(response.bookingdates.checkin).to.eql(\"2026-10-10\");\r\n});\r\n\r\npm.test(\"Check-out date is correct\", function () {\r\n    pm.expect(response.bookingdates.checkout).to.eql(\"2026-10-15\");\r\n});\r\n\r\npm.test(\"Additional needs is correct\", function () {\r\n    pm.expect(response.additionalneeds).to.eql(\"Breakfast\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/booking/{{bookingId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "booking",
+                "{{bookingId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Update Booking",
           "event": [
             {
@@ -241,35 +270,6 @@
           "response": []
         },
         {
-          "name": "Get Booking",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\nconst response = pm.response.json();\r\n\r\npm.test(\"Firstname is correct\", function () {\r\n    pm.expect(response.firstname).to.eql(\"Matheus\");\r\n});\r\n\r\npm.test(\"Lastname is correct\", function () {\r\n    pm.expect(response.lastname).to.eql(\"Silva Teste\");\r\n});\r\n\r\npm.test(\"Total price is correct\", function () {\r\n    pm.expect(response.totalprice).to.eql(200);\r\n});\r\n\r\npm.test(\"Deposit paid is correct\", function () {\r\n    pm.expect(response.depositpaid).to.eql(true);\r\n});\r\n\r\npm.test(\"Check-in date is correct\", function () {\r\n    pm.expect(response.bookingdates.checkin).to.eql(\"2026-10-10\");\r\n});\r\n\r\npm.test(\"Check-out date is correct\", function () {\r\n    pm.expect(response.bookingdates.checkout).to.eql(\"2026-10-15\");\r\n});\r\n\r\npm.test(\"Additional needs is correct\", function () {\r\n    pm.expect(response.additionalneeds).to.eql(\"Breakfast\");\r\n});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/booking/{{bookingId}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "booking",
-                "{{bookingId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "Get Updated Booking",
           "event": [
             {
@@ -278,35 +278,6 @@
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\nconst response = pm.response.json();\r\n\r\npm.test(\"Lastname persisted after update\", function () {\r\n    pm.expect(response.lastname).to.eql(\"Costa Teste\");\r\n});\r\n\r\npm.test(\"Total price persisted after update\", function () {\r\n    pm.expect(response.totalprice).to.eql(300);\r\n});\r\n\r\npm.test(\"Deposit paid persisted after update\", function () {\r\n    pm.expect(response.depositpaid).to.eql(false);\r\n});\r\n\r\npm.test(\"Updated booking dates persisted\", function () {\r\n    pm.expect(response.bookingdates.checkin).to.eql(\"2026-10-12\");\r\n    pm.expect(response.bookingdates.checkout).to.eql(\"2026-10-18\");\r\n});\r\n\r\npm.test(\"Additional needs persisted after update\", function () {\r\n    pm.expect(response.additionalneeds).to.eql(\"Booking Atualizado\");\r\n});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/booking/{{bookingId}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "booking",
-                "{{bookingId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Deleted Booking",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Deleted booking is no longer available\", function () {\r\n    pm.response.to.have.status(404);\r\n});"
                 ]
               }
             }
@@ -352,6 +323,35 @@
                 "value": "token={{token}}"
               }
             ],
+            "url": {
+              "raw": "{{baseUrl}}/booking/{{bookingId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "booking",
+                "{{bookingId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Deleted Booking",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Deleted booking is no longer available\", function () {\r\n    pm.response.to.have.status(404);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
             "url": {
               "raw": "{{baseUrl}}/booking/{{bookingId}}",
               "host": [

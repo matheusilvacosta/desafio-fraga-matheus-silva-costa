@@ -1,4 +1,4 @@
-# US1 — Transferência entre contas próprias
+# Transferência entre contas próprias
 
 ## Objetivo
 

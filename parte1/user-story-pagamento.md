@@ -110,3 +110,25 @@ Para os testes definidos nesta etapa, foram utilizados apenas os critérios de a
 Não foram assumidos comportamentos específicos para contas vencidas, contas já pagas, saldo insuficiente, feriados, horários limite ou agendamento, pois esses pontos não estão definidos no requisito.
 Para os testes relacionados aos dias úteis, foram considerados segunda-feira a sexta-feira como cenários permitidos e sábado e domingo como cenários não permitidos. O tratamento de feriados permanece como uma dúvida, mas ainda identificada de forma geral nos testes.
 Como o requisito não define o que caracteriza um pagamento inválido, o cenário relacionado ao CA03 foi mantido de forma genérica até que os critérios de invalidez sejam esclarecidos.
+
+## Priorização dos testes
+
+Caso apenas 30% dos testes possam ser executados, os seguintes cenários devem ser priorizados:
+
+### Realizar pagamento informando um código de barras
+
+Este é o fluxo principal da funcionalidade. Caso ele não funcione corretamente, o cliente não consegue realizar o pagamento de contas pelo sistema.
+Esse cenário também serve como ponto inicial para validar se a funcionalidade básica está disponível antes da execução dos demais testes.
+
+### Permitir pagamento em dia útil
+
+Valida uma das regras de negócio explícitas da user story. Como o requisito determina que pagamentos só podem ser realizados em dias úteis, é importante garantir que o sistema permita a operação dentro do período esperado.
+
+### Impedir pagamento em dia não útil
+
+Valida o comportamento oposto da mesma regra de negócio, garantindo que o sistema não permita o pagamento quando a operação for realizada fora de um dia útil.
+
+### Impedir pagamento inválido
+
+Valida uma regra diretamente definida no requisito: pagamentos inválidos não devem ser processados.
+Como o requisito ainda não define o que caracteriza um pagamento inválido, este cenário permanece genérico até que essa regra seja refinada com o time.

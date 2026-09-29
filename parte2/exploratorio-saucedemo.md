@@ -125,3 +125,12 @@ Deve ser considerado em regressão por afetar uma etapa importante do fluxo de c
 Pode ser incluído na regressão do carrinho para garantir que o usuário receba um feedback adequado quando não possui produtos adicionados.
 
 ## Riscos e pontos sem cobertura
+Devido ao tempo limitado dos testes exploratórios e devido ao teste ser sobre um site de demonstração, há alguns pontos importantes que não foram contemplados:
+
+- comportamento em outros navegadores;
+- comportamento em dispositivos móveis;
+- validações completas dos campos do checkout (tratamento de erros validados);
+- comportamento dos Dynamic Catalogs em todas as possíveis interações, devido as dúvidas se tal função está fazendo o esperado ou se está com erro;
+- testes relacionados a desempenho;
+- testes relacionados a acessibilidade;
+- testes com outros tipos de contas.

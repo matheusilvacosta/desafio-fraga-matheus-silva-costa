@@ -35,7 +35,7 @@ entender as funcionalidades disponíveis e o comportamento do produto.
 
 ### 15 minutos — Navegação e catálogo
 Verificação dos links, produtos catalogados e diferentes formas de apresentação
-do catálogo, utilizando também o Chrome DevTools como apoio durante a exploração.
+do catálogo, utilizando também o Inspetor/Ferramentas do Desenvolvedor do Firefox como apoio durante a exploração.
 
 ### 10 minutos — Preenchimento e tratamento de dados
 Exploração dos campos utilizados durante o fluxo de compra, verificando como
